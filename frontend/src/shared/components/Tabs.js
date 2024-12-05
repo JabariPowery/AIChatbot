@@ -43,7 +43,7 @@ export const SlidingTabs = () => {
         </NavLink>
       </Tab>
       <Cursor position={position} />
-      <Underline position={positionUnderline} />
+      <Underline positionUnderline={positionUnderline} />
     </ul>
   );
 };
@@ -72,7 +72,7 @@ export const Tab = ({ setPosition, setPositionUnderline, children }) => {
 
           setPositionUnderline({
             width,
-            top: ref.current.offsetTop,
+            top: ref.current.offsetTop + 29,
             opacity: 1,
           });
         }}>

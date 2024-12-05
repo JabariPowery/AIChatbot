@@ -1,12 +1,12 @@
 .header {
     max-width: 15%;
     min-width: 12rem;
-    border: 1px solid red;
     padding: 2rem;
     justify-content: center;
     height: 100vh;
     display: flex;
     position: sticky;
     background-color: var(--color-gray-200);
+    border-right: 1px solid var(--color-gray-300);
 }
 
