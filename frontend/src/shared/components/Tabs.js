@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { NavLink } from "react-router-dom";
 import classes from "./Tabs.module.css";
@@ -11,19 +11,21 @@ export const SlidingTabs = () => {
   });
 
   const [positionUnderline, setPositionUnderline] = useState({
-    top: 0,
-    width: 0,
+    top: 30,
+    width: 80,
+    left: 10,
     opacity: 0,
   });
 
-  // var tabs = [
-  //   { tabName: "Overview", tabRoute: "" },
-  //   { tabName: "Guests", tabRoute: "/guests" },
-  //   // { tabName: "Test", tabRoute: "/test"}
-  // ];
-
   return (
-    <ul className={classes.list}>
+    <ul
+      onMouseLeave={() => {
+        setPosition((pv) => ({
+          ...pv,
+          opacity: 0,
+        }));
+      }}
+      className={classes.list}>
       <Tab
         setPosition={setPosition}
         setPositionUnderline={setPositionUnderline}>
@@ -68,17 +70,17 @@ export const Tab = ({ setPosition, setPositionUnderline, children }) => {
         onClick={() => {
           if (!ref.current) return;
 
-          const { width } = ref.current.getBoundingClientRect();
+          // const { width } = ref.current.getBoundingClientRect();
 
           setPositionUnderline({
-            width,
-            top: ref.current.offsetTop + 29,
+            width: 80,
+            top: ref.current.offsetTop + 30,
+            left: 10,
             opacity: 1,
           });
         }}>
         {children}
       </li>
-      {/* <motion.li /> */}
     </>
   );
 };

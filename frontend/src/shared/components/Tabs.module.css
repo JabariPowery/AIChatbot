@@ -18,8 +18,8 @@
     /* mix-blend-mode: difference; */
     width: fit-content;
     display: block;
-    border: 1px solid var(--color-gray-300);
-    box-shadow: 0 0 1px 1px var(--color-gray-300);
+    /* border: 1px solid var(--color-gray-300);  */
+    /* box-shadow: 0 0 1px 1px var(--color-gray-300); */
 }
 
 .list li {
@@ -51,5 +51,5 @@
     z-index: 1;
     position: absolute;
     height: 0.22rem;
-    width: 2rem;
+    width: 3rem;
 }
