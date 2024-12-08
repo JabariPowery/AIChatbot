@@ -1,0 +1,40 @@
+.section1 {
+    height: 500px;
+    /* border: 1px solid green; */
+    margin: 1rem;
+
+}
+
+ul {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;   
+    border: 1px solid var(--color-gray-400);
+    border-radius: 25px;
+}
+
+.card h1 {
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: start;
+    padding: 0.5rem 1rem 0;
+    margin-bottom: 0.3rem;
+}
+
+.card p {
+    margin-top: 0.3rem;
+    text-align: start;
+    padding: 0.5rem 1rem;
+}
+
+.span {
+    height: 300px;
+    width: 100%;
+    background-color: var(--color-gray-300);
+    border-radius: 25px 25px 0 0;
+}
