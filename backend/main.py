@@ -5,6 +5,7 @@ import models
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
+
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
@@ -24,3 +25,11 @@ def get_db():
         db.close()
 
 db_dependency = Annotated[Session, Depends(get_db)]
+
+# @app.get('/')
+
+@app.post("/users/", status_code=status.HTTP_201_CREATED)
+async def create_user(user: UserBase, db: db_dependency):
+    db_user = models.User(**user.model_dump())
+    db.add(db_user)
+    db.commit()
