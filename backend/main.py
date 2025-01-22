@@ -4,12 +4,26 @@ from typing import Annotated
 import models
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
 #to start backend server
-#uvicron main:app --reload
+#uvicorn main:app --reload
 
 
 app = FastAPI()
+
+origins = [
+    'http://localhost:3000'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
+
 models.Base.metadata.create_all(bind=engine)
 
 class PostBase(BaseModel):

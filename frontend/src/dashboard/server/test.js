@@ -8,7 +8,7 @@ function Test() {
   });
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3306/users/1");
+    const response = await axios.get("http://localhost:8000/users/1");
     console.log(response.data);
     setData(response.data);
   };
