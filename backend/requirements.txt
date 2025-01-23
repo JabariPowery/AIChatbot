@@ -15,7 +15,6 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==3.0.2
 packaging==24.2
-pipenv==2024.4.0
 platformdirs==4.3.6
 pydantic==2.10.3
 pydantic_core==2.27.1

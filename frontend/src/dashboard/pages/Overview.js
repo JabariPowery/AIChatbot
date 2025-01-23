@@ -1,12 +1,14 @@
 import { motion } from "motion/react";
 import classes from "../components/Overview.module.css";
+import Test from "../server/test";
 
 function Overview() {
+  const data = Test();
+
   const cards = [
     {
-      cardName: "One",
-      description:
-        "This contains info about the card, it should fit under the image or whatever else the card is gonna contain",
+      cardName: data.id,
+      description: data.username,
     },
     {
       cardName: "Two",
@@ -20,6 +22,8 @@ function Overview() {
     },
   ];
 
+  console.log(Test);
+
   return (
     <>
       <h1>HomePage</h1>
@@ -27,7 +31,7 @@ function Overview() {
         <ul>
           {cards.map((card, index) => {
             return (
-              <li className={classes.card}>
+              <li className={classes.card} key={index}>
                 <div className={classes.span}></div>
                 <h1>{card.cardName}</h1>
                 <p>{card.description}</p>
