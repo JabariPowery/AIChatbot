@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function Test() {
   const [data, setData] = useState({
     id: 0,
-    name: "",
+    username: "",
   });
 
   const fetchData = async () => {

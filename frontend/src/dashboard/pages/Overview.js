@@ -8,7 +8,7 @@ function Overview() {
   const cards = [
     {
       cardName: data.id,
-      description: data.name,
+      description: data.username,
     },
     {
       cardName: "Two",
