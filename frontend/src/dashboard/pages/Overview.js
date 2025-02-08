@@ -3,22 +3,20 @@ import classes from "../components/Overview.module.css";
 import Test from "../server/test";
 
 function Overview() {
-  const data = Test();
+  // const data = Test();
 
   const cards = [
     {
-      cardName: data.id,
-      description: data.username,
+      // cardName: data.id,
+      // description: data.username,
     },
     {
       cardName: "Two",
-      description:
-        "This contains info about the card, it should fit under the image or whatever else the card is gonna contain",
+      description: "Property 2",
     },
     {
       cardName: "Three",
-      description:
-        "This contains info about the card, it should fit under the image or whatever else the card is gonna contain",
+      description: "Property 3",
     },
   ];
 
@@ -26,16 +24,21 @@ function Overview() {
 
   return (
     <>
-      <h1>HomePage</h1>
+      <h1>Property</h1>
       <div className={classes.section1}>
         <ul>
           {cards.map((card, index) => {
             return (
-              <li className={classes.card} key={index}>
+              <motion.li
+                className={classes.card}
+                key={index}
+                whileHover={{ scale: 1.08 }}
+                // whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                 <div className={classes.span}></div>
                 <h1>{card.cardName}</h1>
                 <p>{card.description}</p>
-              </li>
+              </motion.li>
             );
           })}
         </ul>
