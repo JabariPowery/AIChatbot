@@ -1,10 +1,8 @@
 import { motion } from "motion/react";
-import classes from "../components/Overview.module.css";
+import classes from "../components/Guests.module.css";
 import Test from "../server/test";
 
-function Overview() {
-  // const data = Test();
-
+function Guests() {
   const cards = [
     {
       // cardName: data.id,
@@ -20,11 +18,8 @@ function Overview() {
     },
   ];
 
-  console.log(Test);
-
   return (
     <>
-      <h1>Property</h1>
       <div className={classes.section1}>
         <ul>
           {cards.map((card, index) => {
@@ -43,9 +38,8 @@ function Overview() {
           })}
         </ul>
       </div>
-      <div className={classes.section2}></div> {/*dashboard part i guess*/}
     </>
   );
 }
 
-export default Overview;
+export default Guests;
