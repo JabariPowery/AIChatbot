@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../../shared/server/api";
 import { useEffect, useState } from "react";
 
 function Test() {
@@ -7,13 +7,12 @@ function Test() {
     username: "",
   });
 
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:8000/users/1");
-    console.log(response.data);
-    setData(response.data);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.get("/users/1");
+      console.log(response.data);
+      setData(response.data);
+    };
     fetchData();
   }, []);
 

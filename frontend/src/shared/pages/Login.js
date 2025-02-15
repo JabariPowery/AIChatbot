@@ -1,6 +1,6 @@
 import classes from "../components/Login.module.css";
-import GetLogin from "../server/Login";
-import { useForm } from "react-hook-form    ";
+import GetLogin from "../server/GetLogin";
+import { useForm } from "react-hook-form";
 
 function Login() {
   const {

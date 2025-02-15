@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import api from "./api";
 
-function GetLogin() {
+function GetLogin({ id }) {
   const [data, setData] = useState({
     id: 0,
     username: "",
@@ -9,13 +9,12 @@ function GetLogin() {
     password: "",
   });
 
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:8000/users/1");
-    console.log(response.data);
-    setData(response.data);
-  };
-
   useEffect(() => {
+    const fetchData = async (id) => {
+      const response = await api.get(`/users/${id}`);
+      console.log(response.data);
+      setData(response.data);
+    };
     fetchData();
   }, []);
 

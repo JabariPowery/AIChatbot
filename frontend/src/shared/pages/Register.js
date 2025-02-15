@@ -1,8 +1,9 @@
 import classes from "../components/Login.module.css";
-import GetLogin from "../server/GetLogin";
-import useForm from "react-hook-form";
+// import GetLogin from "../server/GetLogin";
+import { useForm } from "react-hook-form";
+import RegisterUser from "../server/RegisterUser";
 
-function Register() {
+function Register({ postData }) {
   const {
     register,
     handleSubmit,
@@ -10,7 +11,9 @@ function Register() {
   } = useForm();
 
   const registerHandler = (data) => {
-    data = GetLogin();
+    postData(data);
+    // RegisterUser(data);
+    // data = GetLogin(data.id);
   };
 
   return (
