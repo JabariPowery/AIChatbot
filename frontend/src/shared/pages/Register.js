@@ -1,20 +1,32 @@
 import classes from "../components/Login.module.css";
 // import GetLogin from "../server/GetLogin";
+import api from "../server/api";
+// import { useState } from "react";
 import { useForm } from "react-hook-form";
-import RegisterUser from "../server/RegisterUser";
 
-function Register({ postData }) {
+function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const registerHandler = (data) => {
-    postData(data);
-    // RegisterUser(data);
-    // data = GetLogin(data.id);
+  // const [data, setData] = useState({
+  //   id: 0,
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  // });
+
+  const postData = async (user) => {
+    await api.post(`/users/`, {
+      username: user.username,
+      email: user.email,
+      password: user.password,
+    });
   };
+
+  const registerHandler = (data) => postData(data);
 
   return (
     <>
