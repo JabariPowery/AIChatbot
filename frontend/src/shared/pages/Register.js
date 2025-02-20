@@ -18,12 +18,24 @@ function Register() {
   //   password: "",
   // });
 
-  const postData = async (user) => {
-    await api.post(`/users/`, {
-      username: user.username,
-      email: user.email,
-      password: user.password,
-    });
+  const postData = async (data) => {
+    try {
+      await api.post(
+        `/users/`,
+        {
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error posting user", data);
+    }
   };
 
   const registerHandler = (data) => postData(data);

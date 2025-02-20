@@ -15,7 +15,7 @@ app = FastAPI()
 
 origins = [
     'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'http://127.0.0.1:3000',
 ]
 
 app.add_middleware(
@@ -35,6 +35,8 @@ class PostBase(BaseModel):
 
 class UserBase(BaseModel):
     username: str
+    email: str
+    password: str
 
 def get_db():
     db = SessionLocal()
