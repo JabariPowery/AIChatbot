@@ -30,7 +30,7 @@ export const SlidingTabs = () => {
         setPosition={setPosition}
         setPositionUnderline={setPositionUnderline}>
         <NavLink
-          to=""
+          to="/admin"
           className={({ isActive }) => (isActive ? classes.active : undefined)}>
           Overview
         </NavLink>
@@ -39,7 +39,7 @@ export const SlidingTabs = () => {
         setPosition={setPosition}
         setPositionUnderline={setPositionUnderline}>
         <NavLink
-          to="/guests"
+          to="/admin/guests"
           className={({ isActive }) => (isActive ? classes.active : undefined)}>
           Guests
         </NavLink>

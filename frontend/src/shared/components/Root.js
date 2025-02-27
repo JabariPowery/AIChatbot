@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
-import classes from "../../../shared/components/index.module.css";
+import classes from "./index.module.css";
 
-function AdminRootLayout() {
+function RootLayout() {
   return (
     <div className={classes.RootContainer}>
       <MainNavigation />
@@ -13,4 +13,4 @@ function AdminRootLayout() {
   );
 }
 
-export default AdminRootLayout;
+export default RootLayout;

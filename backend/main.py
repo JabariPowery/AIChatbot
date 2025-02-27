@@ -73,6 +73,7 @@ async def delete_post(post_id: int, db:db_dependency):
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: db_dependency):
     db_user = models.User(**user.model_dump())
+    
     db.add(db_user)
     db.commit()
 

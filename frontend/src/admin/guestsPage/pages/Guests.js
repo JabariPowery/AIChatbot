@@ -3,11 +3,11 @@ import classes from "../components/Guests.module.css";
 import Test from "../server/test";
 
 function Guests() {
-  const data = Test();
+  // const data = Test();
   const cards = [
     {
-      cardName: data.id,
-      description: data.username,
+      // cardName: data.id,
+      // description: data.username,
     },
     {
       cardName: "Two",
