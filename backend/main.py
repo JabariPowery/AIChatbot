@@ -5,6 +5,7 @@ import models
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
+# from starlette.middleware.cors import CORSMiddleware
 
 #to start backend server
 #uvicorn main:app --reload
@@ -13,7 +14,8 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
 ]
 
 app.add_middleware(
@@ -21,7 +23,7 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=['*'],
-    allow_headers=['*']
+    allow_headers=['*'],
 )
 
 models.Base.metadata.create_all(bind=engine)
@@ -33,6 +35,8 @@ class PostBase(BaseModel):
 
 class UserBase(BaseModel):
     username: str
+    email: str
+    password: str
 
 def get_db():
     db = SessionLocal()
@@ -69,6 +73,7 @@ async def delete_post(post_id: int, db:db_dependency):
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: db_dependency):
     db_user = models.User(**user.model_dump())
+    
     db.add(db_user)
     db.commit()
 

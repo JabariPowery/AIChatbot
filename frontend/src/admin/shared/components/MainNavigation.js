@@ -1,10 +1,11 @@
 import classes from "./MainNavigation.module.css";
-import Tabs from "./Tabs";
+import { SlidingTabs } from "./Tabs";
+
 function MainNavigation() {
   return (
     <header className={classes.header}>
       <nav>
-        <Tabs />
+        <SlidingTabs />
       </nav>
     </header>
   );

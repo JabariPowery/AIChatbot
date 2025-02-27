@@ -1,100 +1,93 @@
-import { useState, useRef, forwardRef, useEffect } from "react";
+import classes from "./Tabs.module.css";
+import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import { NavLink } from "react-router-dom";
-import classes from "./Tabs.module.css";
 
-export const SlidingTabs = () => {
+function Tabs() {
   const [position, setPosition] = useState({
-    top: 0,
+    left: 0,
     width: 0,
     opacity: 0,
   });
 
   const [positionUnderline, setPositionUnderline] = useState({
-    top: 30,
+    left: 0,
     width: 80,
-    left: 10,
+    top: 10,
     opacity: 0,
   });
 
+  const tabs = [
+    { route: "", name: "Home" },
+    { route: "/guests", name: "Guests" },
+  ];
+
   return (
-    <ul
-      onMouseLeave={() => {
-        setPosition((pv) => ({
-          ...pv,
-          opacity: 0,
-        }));
-      }}
-      className={classes.list}>
-      <Tab
-        setPosition={setPosition}
-        setPositionUnderline={setPositionUnderline}>
-        <NavLink
-          to=""
-          className={({ isActive }) => (isActive ? classes.active : undefined)}>
-          Overview
-        </NavLink>
-      </Tab>
-      <Tab
-        setPosition={setPosition}
-        setPositionUnderline={setPositionUnderline}>
-        <NavLink
-          to="/guests"
-          className={({ isActive }) => (isActive ? classes.active : undefined)}>
-          Guests
-        </NavLink>
-      </Tab>
+    <ul className={classes.list}>
+      {tabs.map(({ route, name }) => {
+        return (
+          <Tab
+            setPosition={setPosition}
+            setPositionUnderline={setPositionUnderline}>
+            <NavLink
+              to={route}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }>
+              {name}
+            </NavLink>
+          </Tab>
+        );
+      })}
       <Cursor position={position} />
-      <Underline positionUnderline={positionUnderline} />
+      <Underline positionUnderline={positionUnderline} />;
     </ul>
   );
-};
+}
 
 export const Tab = ({ setPosition, setPositionUnderline, children }) => {
   const ref = useRef(null);
 
   return (
-    <>
-      <li
-        ref={ref}
-        onMouseOver={() => {
-          if (!ref.current) return;
+    <li
+      ref={ref}
+      onMouseOver={() => {
+        if (!ref.current) return;
 
-          const { width } = ref.current.getBoundingClientRect();
+        const { width } = ref.current.getBoundingClientRect();
 
-          setPosition({
-            width,
-            top: ref.current.offsetTop,
-          });
-        }}
-        onClick={() => {
-          if (!ref.current) return;
+        setPosition({
+          width,
+          left: ref.current.offsetleft,
+        });
+      }}
+      onClick={() => {
+        if (!ref.current) return;
 
-          // const { width } = ref.current.getBoundingClientRect();
+        // const { width } = ref.current.getBoundingClientRect();
 
-          setPositionUnderline({
-            width: 80,
-            top: ref.current.offsetTop + 30,
-            left: 10,
-            opacity: 1,
-          });
-        }}>
-        {children}
-      </li>
-    </>
+        setPositionUnderline({
+          width: 80,
+          left: ref.current.offsetLeft + 30,
+          top: 10,
+          opacity: 1,
+        });
+      }}>
+      {children}
+    </li>
   );
 };
 
-const Cursor = ({ position }) => {
-  return <motion.li animate={position} className={classes.float} />;
-};
+const Cursor = ({ position }) => (
+  <motion.li animate={position} className={classes.float} />
+);
 
 const Underline = ({ positionUnderline }) => {
-  return (
-    <motion.li
-      animate={positionUnderline}
-      className={classes.underline}
-      layoutId="underline"
-    />
-  );
+  <motion.li
+    animate={positionUnderline}
+    className={classes.underline}
+    layoutId="underline"
+  />;
 };
+
+export default Tabs;

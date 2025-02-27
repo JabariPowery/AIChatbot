@@ -1,12 +1,13 @@
 .list {
     display: flex;
+    flex-direction: column;
     gap: 1.5rem;
-    width: 100vw;
+    width: 100%;
     position: relative;
     text-decoration: none;
 }
 
-.list a{
+.list a {
     text-decoration: none;
     color: var(--color-gray-800);
     padding: 0.6rem;
@@ -17,6 +18,8 @@
     /* mix-blend-mode: difference; */
     width: fit-content;
     display: block;
+    /* border: 1px solid var(--color-gray-300);  */
+    /* box-shadow: 0 0 1px 1px var(--color-gray-300); */
 }
 
 .list li {
