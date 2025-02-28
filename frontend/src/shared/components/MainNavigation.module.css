@@ -1,0 +1,12 @@
+.header {
+    /* max-height: 15%; */
+    max-height: 7.5rem;
+    padding: 2rem;
+    justify-content: center;
+    width: 100vw;
+    display: flex;
+    position: sticky;
+    background-color: var(--color-gray-200);
+    border-right: 1px solid var(--color-gray-300);
+}
+

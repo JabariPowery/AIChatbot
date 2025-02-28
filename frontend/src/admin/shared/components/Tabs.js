@@ -17,6 +17,11 @@ export const SlidingTabs = () => {
     opacity: 0,
   });
 
+  const tabs = [
+    { id: 1, route: "/admin", name: "Overview" },
+    { id: 2, route: "/admin/guests", name: "Guests" },
+  ];
+
   return (
     <ul
       onMouseLeave={() => {
@@ -26,62 +31,91 @@ export const SlidingTabs = () => {
         }));
       }}
       className={classes.list}>
-      <Tab
-        setPosition={setPosition}
-        setPositionUnderline={setPositionUnderline}>
-        <NavLink
-          to="/admin"
-          className={({ isActive }) => (isActive ? classes.active : undefined)}>
-          Overview
-        </NavLink>
-      </Tab>
-      <Tab
-        setPosition={setPosition}
-        setPositionUnderline={setPositionUnderline}>
-        <NavLink
-          to="/admin/guests"
-          className={({ isActive }) => (isActive ? classes.active : undefined)}>
-          Guests
-        </NavLink>
-      </Tab>
+      {tabs.map(({ id, route, name }) => {
+        return (
+          <Tab
+            key={id}
+            setPosition={setPosition}
+            setPositionUnderline={setPositionUnderline}>
+            <NavLink
+              key={id}
+              to={route}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }>
+              {name}
+            </NavLink>
+          </Tab>
+        );
+      })}
       <Cursor position={position} />
       <Underline positionUnderline={positionUnderline} />
     </ul>
   );
+
+  // return (
+  //   <ul
+  //     onMouseLeave={() => {
+  //       setPosition((pv) => ({
+  //         ...pv,
+  //         opacity: 0,
+  //       }));
+  //     }}
+  //     className={classes.list}>
+  //     <Tab
+  //       setPosition={setPosition}
+  //       setPositionUnderline={setPositionUnderline}>
+  //       <NavLink
+  //         to="/admin"
+  //         className={({ isActive }) => (isActive ? classes.active : undefined)}>
+  //         Overview
+  //       </NavLink>
+  //     </Tab>
+  //     <Tab
+  //       setPosition={setPosition}
+  //       setPositionUnderline={setPositionUnderline}>
+  //       <NavLink
+  //         to="/admin/guests"
+  //         className={({ isActive }) => (isActive ? classes.active : undefined)}>
+  //         Guests
+  //       </NavLink>
+  //     </Tab>
+  //     <Cursor position={position} />
+  //     <Underline positionUnderline={positionUnderline} />
+  //   </ul>
+  // );
 };
 
 export const Tab = ({ setPosition, setPositionUnderline, children }) => {
   const ref = useRef(null);
 
   return (
-    <>
-      <li
-        ref={ref}
-        onMouseOver={() => {
-          if (!ref.current) return;
+    <li
+      ref={ref}
+      onMouseOver={() => {
+        if (!ref.current) return;
 
-          const { width } = ref.current.getBoundingClientRect();
+        const { width } = ref.current.getBoundingClientRect();
 
-          setPosition({
-            width,
-            top: ref.current.offsetTop,
-          });
-        }}
-        onClick={() => {
-          if (!ref.current) return;
+        setPosition({
+          width,
+          top: ref.current.offsetTop,
+        });
+      }}
+      onClick={() => {
+        if (!ref.current) return;
 
-          // const { width } = ref.current.getBoundingClientRect();
+        // const { width } = ref.current.getBoundingClientRect();
 
-          setPositionUnderline({
-            width: 80,
-            top: ref.current.offsetTop + 30,
-            left: 10,
-            opacity: 1,
-          });
-        }}>
-        {children}
-      </li>
-    </>
+        setPositionUnderline({
+          width: 80,
+          top: ref.current.offsetTop + 30,
+          left: 10,
+          opacity: 1,
+        });
+      }}>
+      {children}
+    </li>
   );
 };
 

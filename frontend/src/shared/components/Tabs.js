@@ -11,25 +11,35 @@ function Tabs() {
   });
 
   const [positionUnderline, setPositionUnderline] = useState({
-    left: 0,
+    left: 10,
     width: 80,
-    top: 10,
+    top: 30,
     opacity: 0,
   });
 
   const tabs = [
-    { route: "", name: "Home" },
-    { route: "/guests", name: "Guests" },
+    { id: 1, route: "/", name: "Home" },
+    { id: 2, route: "/register", name: "Register" },
+    { id: 3, route: "/login", name: "Login" },
   ];
 
   return (
-    <ul className={classes.list}>
-      {tabs.map(({ route, name }) => {
+    <ul
+      onMouseLeave={() => {
+        setPosition((pv) => ({
+          ...pv,
+          opacity: 0,
+        }));
+      }}
+      className={classes.list}>
+      {tabs.map(({ id, route, name }) => {
         return (
           <Tab
+            key={id}
             setPosition={setPosition}
             setPositionUnderline={setPositionUnderline}>
             <NavLink
+              key={id}
               to={route}
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
@@ -40,7 +50,7 @@ function Tabs() {
         );
       })}
       <Cursor position={position} />
-      <Underline positionUnderline={positionUnderline} />;
+      <Underline positionUnderline={positionUnderline} />
     </ul>
   );
 }
@@ -58,20 +68,20 @@ export const Tab = ({ setPosition, setPositionUnderline, children }) => {
 
         setPosition({
           width,
-          left: ref.current.offsetleft,
+          left: ref.current.offsetLeft,
         });
       }}
       onClick={() => {
         if (!ref.current) return;
 
         // const { width } = ref.current.getBoundingClientRect();
-
-        setPositionUnderline({
-          width: 80,
-          left: ref.current.offsetLeft + 30,
-          top: 10,
+        // const data = ref.current.getBoundingClientRect();
+        // console.log();
+        setPositionUnderline((pv) => ({
+          ...pv,
+          left: ref.current.offsetLeft,
           opacity: 1,
-        });
+        }));
       }}>
       {children}
     </li>

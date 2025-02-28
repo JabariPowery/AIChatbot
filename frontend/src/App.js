@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />, //error
     children: [
       { index: true, element: <Home /> },
-      { path: "/guests", element: <Guests /> },
+      // { path: "/guests", element: <Guests /> },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
     ],
@@ -24,7 +24,10 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminRootLayout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <Register /> }],
+    children: [
+      { index: true, element: <Register /> },
+      { path: "/admin/guests", element: <Guests /> },
+    ],
   },
 ]);
 

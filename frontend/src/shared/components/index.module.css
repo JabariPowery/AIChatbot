@@ -52,7 +52,11 @@ main {
   /* font-family: "MoonKid"; */
 }
 
+
+.AdminRootContainer, .RootContainer{
+  display:flex;
+}
+
 .RootContainer {
-  display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
 }
