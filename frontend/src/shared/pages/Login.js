@@ -18,7 +18,6 @@ function Login() {
       <h1>Login</h1>
       <div className={classes.formContainer}>
         <form className={classes.form} onSubmit={handleSubmit(loginHandler)}>
-          <input type="text" {...register("username", { required: true })} />
           {/* {errors.username && <span className={classes.formError}>Username is required</span>} */}
           <input type="email" {...register("email", { required: true })} />
           {/* {errors.email && <span className={classes.formError}>Email is required</span>} */}

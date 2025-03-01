@@ -13,7 +13,7 @@ function Tabs() {
   const [positionUnderline, setPositionUnderline] = useState({
     left: 10,
     width: 80,
-    top: 30,
+    top: 35,
     opacity: 0,
   });
 
@@ -74,11 +74,11 @@ export const Tab = ({ setPosition, setPositionUnderline, children }) => {
       onClick={() => {
         if (!ref.current) return;
 
-        // const { width } = ref.current.getBoundingClientRect();
+        const { width } = ref.current.getBoundingClientRect();
         // const data = ref.current.getBoundingClientRect();
-        // console.log();
         setPositionUnderline((pv) => ({
           ...pv,
+          width,
           left: ref.current.offsetLeft,
           opacity: 1,
         }));
@@ -92,12 +92,8 @@ const Cursor = ({ position }) => (
   <motion.li animate={position} className={classes.float} />
 );
 
-const Underline = ({ positionUnderline }) => {
-  <motion.li
-    animate={positionUnderline}
-    className={classes.underline}
-    layoutId="underline"
-  />;
-};
+const Underline = ({ positionUnderline }) => (
+  <motion.li animate={positionUnderline} className={classes.underline} />
+);
 
 export default Tabs;

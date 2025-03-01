@@ -5,13 +5,14 @@
     position: relative;
     text-decoration: none;
     margin-left: 3.3rem;
+    /* overflow-y: hidden; */
+    
 }
 
 .list a{
     text-decoration: none;
     color: var(--color-gray-800);
-    padding: 0.6rem;
-    padding-right: 4rem;
+    padding: 0.6rem 1rem;
     border-radius: 8px;
     z-index: 2;
     position: relative;
@@ -22,6 +23,7 @@
 
 .list li {
     width: fit-content;
+
 }
 
 .list a:hover,
@@ -42,6 +44,7 @@
     height: 2.8rem;
     width: 2rem;
     border-radius: 8px;
+    
 }
 
 .list .underline {
