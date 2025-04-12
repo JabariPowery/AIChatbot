@@ -1,11 +1,11 @@
-.part1 {
+.part1container {
     display: flex;
     flex-direction: column;
     /* width: 100vw; */
     /* align-items: center; */
 }
 
-p {
+.pannel {
     position: relative;
     font-size: 1em;
     text-align: right;
@@ -15,7 +15,7 @@ p {
     margin: 20rem 0;
 }
 
-p:nth-child(even) {
+.pannel:nth-child(even) {
     text-align: left;
     right: 100%;
     left: -100%;
