@@ -5,17 +5,18 @@
     /* align-items: center; */
 }
 
-.pannel {
+.panel {
     position: relative;
     font-size: 1em;
     text-align: right;
     left: 100%;
     right: 0;
     width: 400px;
-    margin: 20rem 0;
+    min-height: 100vh;
+    /* margin: 20rem 0; */
 }
 
-.pannel:nth-child(even) {
+.panel:nth-child(even) {
     text-align: left;
     right: 100%;
     left: -100%;
